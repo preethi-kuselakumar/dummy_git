@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<style>
+    *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+body{
+    background-attachment: fixed;
+    background-image: url(./img-gallery/img1.jpeg)  ;
+    background-size: cover; background-position: center;
+}
+nav{
+    display: flex;
+    background-color: white;
+    color:rgb(11, 176, 176);
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 55px;
+}
+nav h1{
+    cursor: pointer;
+    font-size: 15px;
+}
+nav ul{
+    list-style-type: none;  
+    display:flex
+}
+nav ul li{
+    margin: 5px 20px;
+   font-size: 12px;
+    word-spacing: 0px;
+}
+nav ul li a{
+    text-decoration:none;
+    color: black;
+}
+a:hover{
+    border-bottom: 3.5px solid red;
+}
+
+</style>
+<body>
+    <nav>
+        <h1> History</h1>
+    <ul>
+        <li><a href="#">Photos</a></li>
+        <li><a href="#">Videos</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+</body>
+</html>

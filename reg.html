@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register page</title>
+
+
+ <style>
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("./img-gallery/img1.jpeg") ;
+    background-size: cover; background-position: center;
+}
+.container{
+    width: 420px;
+    background-color: transparent;
+    color: white;
+    border: 1.5px solid rgba(255, 255, 255, 0.385);
+    border-radius: 12px;
+    padding: 35px 40px;
+    backdrop-filter: blur(5px);
+}
+.container label{
+    padding: 10px 10px;
+}
+.container h1{
+font-size: 36px;
+text-align: center;
+}
+.container .input-group{
+    position: relative;
+    width: 100%;
+    height:50px;
+    margin: 50px 0px;
+
+}
+.input-group input{
+    font-size: 16px;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255,255,255, .2);
+    border-radius: 40px;
+    padding: 20px 45px 20px 20px;
+}
+form button{
+    color: #fff;
+    width: 250px; height: 35px; cursor: pointer;
+    background: #fff; border: none; outline: none;
+    border-radius: 42px; 
+    margin-left: 15%;
+    text-decoration: none; color: black;
+    font-size: 15px; font-weight: 600;
+}
+ .input-group .error{
+    color: red;
+    font-size: 14px;
+    margin-top: 3px ;
+    padding: 0px 10px;
+}
+.input-group.success input{
+    border-color: green;
+    
+}
+.input-group.error input{
+    border-color:red;
+} 
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <form id="form" onsubmit="returnValidateForm()">
+            <h1>Register</h1>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+                <div class="error"></div>
+            </div>
+            <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email">
+                <div class="error"></div>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+                <div class="error"></div>
+            </div>
+            <div class="input-group">
+                <label for="cpassword">Confirm Password</label>
+                <input type="password" id="cpassword" name="cpassword">
+                <div class="error"></div>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div> 
+
+
+</body>
+    
+<script>
+const form = document.querySelector('#form')
+const username = document.querySelector('#username')
+const email = document.querySelector('#email')
+const password = document.querySelector('#password')
+const cpassword = document.querySelector('#cpassword')
+
+form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    validateInputs();
+
+})
+function validateInputs(){
+    const usernameVal= username.value.trim()
+    const emailVal= email.value.trim()
+    const passwordVal= password.value.trim()
+    const cpasswordVal= cpassword.value.trim() 
+
+    let isValid = true;
+
+    if(usernameVal==="") {
+        setError(username,"username is required")
+        isValid = false;
+    }
+    else{
+        setSuccess(username)
+    }
+    if(emailVal===""){
+        setError(email, "Email is required")
+        isValid = false;
+    }
+    else{
+        setSuccess(email)
+    }
+    if(passwordVal === ""){
+        setError(password, "password is required")
+        isValid = false;
+    }
+    else if(passwordVal.length<8){
+        setError(password,"password must be atleast 8 character")
+        isValid = false;
+    }
+    else{
+        setSuccess(password)
+    }
+    if(cpasswordVal === ""){
+        setError(cpassword,"confirm password is required")
+        isValid = false;
+    }
+    else if(cpasswordVal !== passwordVal){
+        setError(cpassword, "password does not match")
+        isValid = false;
+    }
+    else{
+        setSuccess(cpassword)
+    }
+    if (isValid) {
+        window.location.href = 'home.html';
+        alert("successfully registered");
+    }
+}
+
+function setError(element,message){
+    const inputGroup = element.parentElement;
+    const errorElement = inputGroup.querySelector('.error')
+
+    errorElement.innerText = message;
+    inputGroup.classList.add('error')
+    inputGroup.classList.remove('success')
+
+}
+function setSuccess(element){
+    const inputGroup = element.parentElement;
+    const errorElement = inputGroup.querySelector('.error')
+
+    errorElement.innerText = "";
+    inputGroup.classList.add('success')
+    inputGroup.classList.remove('error')
+}
+
+</script>
+
+
+        
+</head>
+</html>
